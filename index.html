@@ -1,1 +1,48 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/><meta name="theme-color" content="#000000"/><meta name="description" content="JL GLOVES"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/><link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"/><script src="https://preview.threekit.com/app/js/threekit-player.js"></script><title>Jl GLOVES</title><script defer="defer" src="treble-app.js"></script><link href="treble-app.css" rel="stylesheet"></head><body><noscript>You need to enable JavaScript to run this app.</noscript><div class="tk-treble-app tk-treble-app-container"><div id="tk-treble-root"></div><div id="tk-treble-form"></div></div></body></html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <button onclick="xyz()">click</button>
+
+      <input type="file" id="fileinput" />
+    </div>
+
+    <script>
+      function xyz() {
+        const form = new FormData();
+
+        let files = document.getElementById("fileinput");
+
+        console.log(files.files[0]);
+
+        form.append("file", files.files[0]);
+
+        const options = {
+          method: "POST",
+          headers: {
+            accept: "application/json",
+            authorization: "Bearer d93348d8-8bba-4d89-b22f-abe8c95cb839",
+          },
+        };
+
+        options.body = form;
+
+        fetch("https://preview.threekit.com/api/files", options)
+          .then((response) => response.json())
+          .then((response) => {
+            console.log(response, response.files[0].id);
+
+            let url = `https://preview.threekit.com/api/files/${response.files[0].id}/content`;
+            console.log("urll", url);
+          })
+          .catch((err) => console.error(err));
+      }
+    </script>
+  </body>
+</html>
