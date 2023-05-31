@@ -38,7 +38,7 @@
           .then((response) => {
             console.log(response, response.files[0].id);
 
-            let url = `https://preview.threekit.com/api/files/${response.files[0].id}/content`;
+            let url = `https://preview.threekit.com/api/files/${response.files[0].id}/content?bearer_token=5b136804-63f1-4c9f-8ea8-4c0a12b2e294`;
             console.log("urll", url);
           })
           .catch((err) => console.error(err));
