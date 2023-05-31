@@ -34,7 +34,7 @@
 
         options.body = form;
 
-        fetch("https://preview.threekit.com/api/files", options)
+        fetch("https://preview.threekit.com/api/files?bearer_token=e7012b83-7241-4609-9562-c94449c700d5", options)
           .then((response) => response.json())
           .then((response) => {
             console.log(response, response.files[0].id);
